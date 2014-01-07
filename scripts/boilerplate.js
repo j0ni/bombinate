@@ -4,13 +4,16 @@ var client = arDrone.createClient();
 client.takeoff();
 
 client
+  // .after(5000, function() {
+  //   this.clockwise(0.5);
+  // })
+  // .after(3000, function() {
+  //   this.animate('flipLeft', 15);
+  // })
   .after(5000, function() {
-    this.clockwise(0.5);
+    this.front(0.1);
   })
   .after(3000, function() {
-    this.animate('flipLeft', 15);
-  })
-  .after(1000, function() {
     this.stop();
     this.land();
   });
