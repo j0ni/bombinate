@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/j0ni/bombinate",
   "dependencies": {
-    "ar-drone": "~0.3.1"
+    "ar-drone": "~0.3.1",
+    "dronestream": "~1.1.1"
   }
 }
