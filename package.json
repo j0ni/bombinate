@@ -1,0 +1,22 @@
+{
+  "name": "bombinate",
+  "version": "0.0.0",
+  "description": "bombinate =========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/j0ni/bombinate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j0ni/bombinate/issues"
+  },
+  "homepage": "https://github.com/j0ni/bombinate",
+  "dependencies": {
+    "ar-drone": "~0.3.1"
+  }
+}
