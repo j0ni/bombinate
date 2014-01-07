@@ -1,7 +1,8 @@
 var http = require('http'),
     arDrone = require('ar-drone'),
     client  = arDrone.createClient(),
-    QRcodes = require('qrcode-emitter'),
+    // QRcodes = require('qrcode-emitter'),
+    QRcodes = require('./qrcodeemitter'),
     dronestream = require('dronestream');
 
 //console.log("starting http server..");
@@ -12,39 +13,45 @@ var http = require('http'),
 //dronestream.listen(server);
 //server.listen(5555);
 
+client.config("video:video_channel", 3);
+
+client.takeoff();
 
 client
-    .after(2000, function() {
+  .after(2000, function() {
 
 
 
-    })
-    .after(2000, function() {
+  })
+  .after(2000, function() {
 
-        var pngStream = client.getPngStream();
+    var pngStream = client.getPngStream();
 
-        console.log("starting emitter..");
+    console.log("starting emitter..");
 
-        var qrEmitter = new QRcodes(pngStream);
+    var qrEmitter = new QRcodes(pngStream);
 
 
-        qrEmitter.on('qrcode', function (code) {
+    qrEmitter.on('qrcode', function (code) {
 
-            console.log("found one!: " + code);
+      console.log("found one!: " + code);
 
-            //self.emit('qrcode', code);
-        });
+      //self.emit('qrcode', code);
+    });
 
-        qrEmitter.start();
+    qrEmitter.start();
 
-        pngStream.on('data', function(buf) {
+    pngStream.on('data', function(buf) {
 
-            //console.log("streaming png..");
-            //console.log(buf);
+      //console.log("streaming png..");
+      //console.log(buf);
 
-        });
-
-});
+    });
+  })
+  .after(60000, function () {
+    client.stop();
+    client.land();
+  });
 
 //client.takeoff();
 
@@ -56,5 +63,3 @@ client
 //        this.stop();
 //        this.land();
 //    });
-
-

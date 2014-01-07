@@ -18,6 +18,9 @@
   "homepage": "https://github.com/j0ni/bombinate",
   "dependencies": {
     "ar-drone": "~0.3.1",
-    "dronestream": "~1.1.1"
+    "dronestream": "~1.1.1",
+    "canvas": "~1.1.2",
+    "qrcode-emitter": "~0.1.3",
+    "jsqrcode": "0.0.6"
   }
 }
