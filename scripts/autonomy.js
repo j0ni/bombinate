@@ -4,8 +4,10 @@ var autonomy = require('ardrone-autonomy'),
 mission
   .takeoff()
   .altitude(2)
-  .forward(2)
-  .left(2)
+  .hover(5000)
+  .zero()
+  .go({x: 1, y: 1})
+  .ccw(90)
   .hover(2000)
   .land();
 
