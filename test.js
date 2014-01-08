@@ -13,16 +13,19 @@ process.on('exit', function () {
 
 client.takeoff();
 
-qrscan(client, function (error, code) {
-  travel(client, code, function (error, client, callback) {
-    if (error) {
-      console.error(error);
-      stop();
-      process.exit(1);
-    }
+client.after(5000, function () {
+  client.disableEmergency();
+  qrscan(client, function (error, code) {
+    travel(client, code, function (error, client, callback) {
+      if (error) {
+        console.error(error);
+        stop();
+        process.exit(1);
+      }
 
-    stop();
-    console.log("FTW!");
+      stop();
+      console.log("FTW!");
+    });
   });
 });
 
